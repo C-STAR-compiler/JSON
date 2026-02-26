@@ -13,14 +13,17 @@
 #include <str.h>
 #include <list.h>
 
+#include "json.export.h"
+
+#define LIB_EXPORT JSON_EXPORT
 #define TYPENAME JSON
 
 // (!) This class must always be initialized using the NEW macro
 OBJECT () INHERIT (Map)
 END_OBJECT();
 
-JSON *_(Deserialize)(CharStream *stream);
-void  _(Serialize)(CharStream *stream);
+JSON_EXPORT JSON *_(Deserialize)(CharStream *stream);
+JSON_EXPORT void  _(Serialize)(CharStream *stream);
 
 #undef TYPENAME
 
@@ -30,4 +33,5 @@ OBJECT (const char *message) INHERIT (Exception)
 END_OBJECT("");
 
 #undef TYPENAME
+#undef LIB_EXPORT
 #endif
